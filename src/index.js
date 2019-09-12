@@ -1,34 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-const Hello = props => {
+const App = props => {
+  const [counter, setCounter] = useState(0);
+
+  const increaseByOne = () => setCounter(counter + 1);
+
+  const setToZero = () => setCounter(0);
+
   return (
     <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old.
-      </p>
+      <div>{counter}</div>
+      <button onClick={increaseByOne}>plus</button>
+      <button onClick={setToZero}>zero</button>
     </div>
   );
 };
 
-const App = () => {
-  const name = "Peter";
-  const age = 10;
-
-  return (
-    <>
-      <h1>Greetings</h1>
-
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
-    </>
-  );
-};
-//<Hello /> is a new 'Component' and can be used as many times
-// as you want.
-
-//Component names need to be capitalized.
-
-//Typically div element wrapper needs to be present.
-//arrays can be used, for ex., but look ugly.
 ReactDOM.render(<App />, document.getElementById("root"));
